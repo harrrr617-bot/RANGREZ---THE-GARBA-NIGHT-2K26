@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RANGREZ – THE GARBA NIGHT 2K26</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #180606;
+  color: white;
+}
+
+header {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 20px;
+  background:
+    radial-gradient(circle at top, #8b1e1e, #180606 65%);
+}
+
+.hero h1 {
+  color: #ffd166;
+  font-size: clamp(38px, 7vw, 80px);
+  margin-bottom: 15px;
+}
+
+.hero h2 {
+  font-size: clamp(20px, 4vw, 32px);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  color: #f7d794;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 30px;
+  background: #ffd166;
+  color: #3b0909;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  color: #ffd166;
+  font-size: 35px;
+  margin-bottom: 35px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #2b0b0b;
+  border: 1px solid #8d5b19;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+}
+
+.card h3 {
+  color: #ffd166;
+  margin-bottom: 10px;
+}
+
+.form-box {
+  max-width: 600px;
+  margin: auto;
+  background: #2b0b0b;
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid #8d5b19;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 7px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 13px;
+  border-radius: 8px;
+  border: 1px solid #777;
+  background: #fff;
+  color: #111;
+  font-size: 16px;
+}
+
+.total {
+  margin-top: 20px;
+  font-size: 22px;
+  color: #ffd166;
+  font-weight: bold;
+}
+
+.payment {
+  margin-top: 25px;
+}
+
+.payment button {
+  margin: 7px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid #ffd166;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.payment button:hover {
+  background: #ffd166;
+  color: #300909;
+}
+
+.status {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #4b1919;
+  text-align: center;
+}
+
+.confirm {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #777;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.confirm.enabled {
+  background: #ffd166;
+  color: #300909;
+  cursor: pointer;
+}
+
+.ticket {
+  display: none;
+  margin-top: 30px;
+  background: #fff;
+  color: #111;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.ticket h2 {
+  color: #8b1e1e;
+  margin-bottom: 20px;
+}
+
+.ticket p {
+  margin: 10px 0;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #0c0303;
+  color: #aaa;
+}
+
+@media(max-width:600px) {
+  .form-box {
+    padding: 20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="hero">
+    <h1>RANGREZ</h1>
+    <h2>THE GARBA NIGHT 2K26</h2>
+    <p>Feel the Beat. Live the Colours.</p>
+    <p style="margin-top:15px;">Presented by Student Council Members</p>
+    <a href="#register" class="btn">BOOK YOUR TICKETS</a>
+  </div>
+</header>
+
+<section>
+  <h2 class="title">EVENT DETAILS</h2>
+
+  <div class="info-grid">
+
+    <div class="card">
+      <h3>📅 DATE</h3>
+      <p>14 October 2026</p>
+    </div>
+
+    <div class="card">
+      <h3>⏰ TIME</h3>
+      <p>5:30 PM onwards</p>
+    </div>
+
+    <div class="card">
+      <h3>📍 VENUE</h3>
+      <p>Shree Devi College, Kenjar</p>
+    </div>
+
+    <div class="card">
+      <h3>🎟️ TICKET</h3>
+      <p>₹399 / person</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="register">
+
+  <h2 class="title">REGISTER NOW</h2>
+
+  <div class="form-box">
+
+    <label>Full Name</label>
+    <input type="text" id="name" placeholder="Enter your full name">
+
+    <label>College Registration Number</label>
+    <input type="text" id="collegeReg" placeholder="Enter registration number">
+
+    <label>Mobile Number</label>
+    <input type="tel" id="phone" placeholder="Enter mobile number">
+
+    <label>Email Address</label>
+    <input type="email" id="email" placeholder="Enter email">
+
+    <label>Number of Tickets</label>
+
+    <select id="quantity" onchange="updateTotal()">
+      <option value="1">1 Ticket</option>
+      <option value="2">2 Tickets</option>
+      <option value="3">3 Tickets</option>
+      <option value="4">4 Tickets</option>
+      <option value="5">5 Tickets</option>
+    </select>
+
+    <div class="total">
+      Total: ₹<span id="total">399</span>
+    </div>
+
+    <div class="payment">
+
+      <h3>PAYMENT</h3>
+
+      <button onclick="pay('UPI / QR')">
+        📱 UPI / QR
+      </button>
+
+      <button onclick="pay('Net Banking')">
+        🏦 Net Banking
+      </button>
+
+      <button onclick="pay('Card')">
+        💳 Card
+      </button>
+
+      <div class="status" id="status">
+        Payment not completed
+      </div>
+
+    </div>
+
+    <button
+      class="confirm"
+      id="confirm"
+      onclick="bookTicket()"
+      disabled>
+      CONFIRM BOOKING
+    </button>
+
+    <div class="ticket" id="ticket">
+
+      <h2>🎟️ RANGREZ DIGITAL TICKET</h2>
+
+      <p><strong>Name:</strong> <span id="tName"></span></p>
+
+      <p>
+        <strong>College Registration No:</strong>
+        <span id="tReg"></span>
+      </p>
+
+      <p>
+        <strong>Tickets:</strong>
+        <span id="tQty"></span>
+      </p>
+
+      <p>
+        <strong>Booking ID:</strong>
+        <span id="bookingId"></span>
+      </p>
+
+      <p>
+        <strong>Event:</strong>
+        RANGREZ – THE GARBA NIGHT 2K26
+      </p>
+
+      <p>
+        <strong>Date:</strong>
+        14 October 2026
+      </p>
+
+      <p>
+        <strong>Time:</strong>
+        5:30 PM onwards
+      </p>
+
+      <p>
+        <strong>Venue:</strong>
+        Shree Devi College, Kenjar
+      </p>
+
+      <p>
+        <strong>Payment:</strong>
+        Successful
+      </p>
+
+      <div style="margin-top:20px;font-size:45px;">
+        ▣ QR
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2026 RANGREZ – THE GARBA NIGHT 2K26
+  <br>
+  Student Council Members
+</footer>
+
+<script>
+
+const PRICE = 399;
+
+let paymentCompleted = false;
+
+function updateTotal() {
+
+  const quantity =
+    document.getElementById("quantity").value;
+
+  document.getElementById("total").innerText =
+    quantity * PRICE;
+}
+
+function pay(method) {
+
+  /*
+    DEMO PAYMENT ONLY.
+
+    Real UPI/Card/Net Banking payment
+    must be connected to a payment gateway
+    and verified on a server.
+  */
+
+  paymentCompleted = true;
+
+  document.getElementById("status").innerText =
+    "✓ Payment successful via " + method;
+
+  document.getElementById("status").style.background =
+    "#164d2b";
+
+  const button =
+    document.getElementById("confirm");
+
+  button.disabled = false;
+
+  button.classList.add("enabled");
+}
+
+function bookTicket() {
+
+  if (!paymentCompleted) {
+
+    alert("Please complete payment first.");
+
+    return;
+  }
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const reg =
+    document.getElementById("collegeReg").value.trim();
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const quantity =
+    document.getElementById("quantity").value;
+
+  if (!name || !reg || !phone || !email) {
+
+    alert("Please fill all details.");
+
+    return;
+  }
+
+  const booking =
+    "RNG-" + Date.now().toString().slice(-8);
+
+  document.getElementById("tName").innerText =
+    name;
+
+  document.getElementById("tReg").innerText =
+    reg;
+
+  document.getElementById("tQty").innerText =
+    quantity;
+
+  document.getElementById("bookingId").innerText =
+    booking;
+
+  document.getElementById("ticket").style.display =
+    "block";
+
+  document.getElementById("ticket").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+</script>
+
+</body>
+</html>
