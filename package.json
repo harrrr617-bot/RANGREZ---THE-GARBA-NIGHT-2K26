@@ -1,0 +1,10 @@
+{
+  "name": "rangrez-garba-2026",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
+    "qrcode": "^1.5.4",
+    "razorpay": "^2.9.6"
+  }
+}
