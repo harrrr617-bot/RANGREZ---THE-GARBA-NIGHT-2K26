@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RANGREZ Ticket Verification</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #16051f;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .box {
+      background: white;
+      color: #222;
+      width: 100%;
+      max-width: 500px;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #6a1b9a;
+    }
+
+    #result {
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 12px;
+      background: #f3f3f3;
+    }
+
+    .valid {
+      color: green;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .invalid {
+      color: red;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <h1>🎟️ RANGREZ</h1>
+
+  <h2>Ticket Verification</h2>
+
+  <div id="result">
+    Checking ticket...
+  </div>
+
+</div>
+
+<script>
+
+async function verifyTicket() {
+
+  const params = new URLSearchParams(window.location.search);
+
+  const booking = params.get("booking");
+  const token = params.get("token");
+
+  const result = document.getElementById("result");
+
+  if (!booking || !token) {
+
+    result.innerHTML =
+      '<div class="invalid">INVALID TICKET</div>';
+
+    return;
+  }
+
+  try {
+
+    const response = await fetch(
+      `/api/verify-ticket?booking=${encodeURIComponent(booking)}&token=${encodeURIComponent(token)}`
+    );
+
+    const data = await response.json();
+
+    if (!response.ok || !data.valid) {
+
+      result.innerHTML =
+        '<div class="invalid">❌ INVALID TICKET</div>';
+
+      return;
+    }
+
+    result.innerHTML = `
+      <div class="valid">✅ VALID TICKET</div>
+
+      <br>
+
+      <strong>Name:</strong> ${data.name}<br><br>
+
+      <strong>College Reg. No:</strong>
+      ${data.college_reg_no}<br><br>
+
+      <strong>Tickets:</strong>
+      ${data.quantity}<br><br>
+
+      <strong>Booking ID:</strong>
+      ${data.booking_code}<br><br>
+
+      <strong>Event:</strong>
+      RANGREZ – THE GARBA NIGHT 2K26<br><br>
+
+      <strong>Date:</strong>
+      14 October 2026<br><br>
+
+      <strong>Venue:</strong>
+      Shree Devi College, Kenjar
+    `;
+
+  } catch (error) {
+
+    result.innerHTML =
+      '<div class="invalid">Unable to verify ticket.</div>';
+
+  }
+
+}
+
+verifyTicket();
+
+</script>
+
+</body>
+</html>
