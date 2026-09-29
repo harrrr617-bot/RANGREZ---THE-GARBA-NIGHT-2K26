@@ -1,427 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RANGREZ – THE GARBA NIGHT 2K26</title>
+  <title>RANGREZ – THE GARBA NIGHT 2K26</title>
 
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-body {
-  font-family: Arial, sans-serif;
-  background: #180606;
-  color: white;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-header {
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 30px 20px;
-  background:
-    radial-gradient(circle at top, #8b1e1e, #180606 65%);
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #16051f, #5b176f, #d35400);
+      color: white;
+      min-height: 100vh;
+    }
 
-.hero h1 {
-  color: #ffd166;
-  font-size: clamp(38px, 7vw, 80px);
-  margin-bottom: 15px;
-}
+    .container {
+      width: 92%;
+      max-width: 700px;
+      margin: auto;
+      padding: 30px 0 60px;
+    }
 
-.hero h2 {
-  font-size: clamp(20px, 4vw, 32px);
-  margin-bottom: 20px;
-}
+    .hero {
+      text-align: center;
+      padding: 35px 15px;
+    }
 
-.hero p {
-  font-size: 20px;
-  color: #f7d794;
-}
+    .hero h1 {
+      font-size: 38px;
+      margin: 10px 0;
+    }
 
-.btn {
-  display: inline-block;
-  margin-top: 30px;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 30px;
-  background: #ffd166;
-  color: #3b0909;
-  font-size: 17px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-}
+    .hero h2 {
+      font-size: 18px;
+      font-weight: normal;
+    }
 
-section {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
+    .tagline {
+      font-style: italic;
+      margin: 20px 0;
+    }
 
-.title {
-  text-align: center;
-  color: #ffd166;
-  font-size: 35px;
-  margin-bottom: 35px;
-}
+    .details {
+      background: rgba(255,255,255,0.12);
+      padding: 20px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+      line-height: 1.8;
+    }
 
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
+    .card {
+      background: white;
+      color: #222;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+    }
 
-.card {
-  background: #2b0b0b;
-  border: 1px solid #8d5b19;
-  border-radius: 15px;
-  padding: 25px;
-  text-align: center;
-}
+    .card h2 {
+      text-align: center;
+      color: #6a1b9a;
+    }
 
-.card h3 {
-  color: #ffd166;
-  margin-bottom: 10px;
-}
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
 
-.form-box {
-  max-width: 600px;
-  margin: auto;
-  background: #2b0b0b;
-  padding: 30px;
-  border-radius: 20px;
-  border: 1px solid #8d5b19;
-}
+    input,
+    select {
+      width: 100%;
+      padding: 13px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 9px;
+      font-size: 16px;
+    }
 
-label {
-  display: block;
-  margin-top: 18px;
-  margin-bottom: 7px;
-}
+    .price {
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #6a1b9a;
+    }
 
-input,
-select {
-  width: 100%;
-  padding: 13px;
-  border-radius: 8px;
-  border: 1px solid #777;
-  background: #fff;
-  color: #111;
-  font-size: 16px;
-}
+    button {
+      width: 100%;
+      padding: 15px;
+      border: 0;
+      border-radius: 10px;
+      background: #6a1b9a;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-.total {
-  margin-top: 20px;
-  font-size: 22px;
-  color: #ffd166;
-  font-weight: bold;
-}
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
 
-.payment {
-  margin-top: 25px;
-}
+    #message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
 
-.payment button {
-  margin: 7px;
-  padding: 12px 18px;
-  border-radius: 8px;
-  border: 1px solid #ffd166;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-}
+    #ticket {
+      display: none;
+      margin-top: 25px;
+      background: white;
+      color: #222;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+    }
 
-.payment button:hover {
-  background: #ffd166;
-  color: #300909;
-}
+    #ticket img {
+      width: 220px;
+      max-width: 100%;
+      margin: 15px auto;
+    }
 
-.status {
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 8px;
-  background: #4b1919;
-  text-align: center;
-}
+    .ticket-title {
+      color: #6a1b9a;
+      font-size: 26px;
+      font-weight: bold;
+    }
 
-.confirm {
-  width: 100%;
-  margin-top: 25px;
-  padding: 15px;
-  border: none;
-  border-radius: 10px;
-  background: #777;
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
-}
+    .success {
+      color: green;
+      font-weight: bold;
+    }
 
-.confirm.enabled {
-  background: #ffd166;
-  color: #300909;
-  cursor: pointer;
-}
-
-.ticket {
-  display: none;
-  margin-top: 30px;
-  background: #fff;
-  color: #111;
-  border-radius: 20px;
-  padding: 25px;
-}
-
-.ticket h2 {
-  color: #8b1e1e;
-  margin-bottom: 20px;
-}
-
-.ticket p {
-  margin: 10px 0;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  background: #0c0303;
-  color: #aaa;
-}
-
-@media(max-width:600px) {
-  .form-box {
-    padding: 20px;
-  }
-}
-</style>
+    .download-btn {
+      margin-top: 15px;
+      background: #222;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="hero">
-    <h1>RANGREZ</h1>
+<div class="container">
+
+  <section class="hero">
+
+    <h1>🌈 RANGREZ</h1>
+
     <h2>THE GARBA NIGHT 2K26</h2>
-    <p>Feel the Beat. Live the Colours.</p>
-    <p style="margin-top:15px;">Presented by Student Council Members</p>
-    <a href="#register" class="btn">BOOK YOUR TICKETS</a>
-  </div>
-</header>
 
-<section>
-  <h2 class="title">EVENT DETAILS</h2>
+    <p class="tagline">
+      Feel the Beat. Live the Colours.
+    </p>
 
-  <div class="info-grid">
+    <p>
+      Presented by <strong>Student Council Members</strong>
+    </p>
 
-    <div class="card">
-      <h3>📅 DATE</h3>
-      <p>14 October 2026</p>
-    </div>
+  </section>
 
-    <div class="card">
-      <h3>⏰ TIME</h3>
-      <p>5:30 PM onwards</p>
-    </div>
 
-    <div class="card">
-      <h3>📍 VENUE</h3>
-      <p>Shree Devi College, Kenjar</p>
-    </div>
+  <div class="details">
 
-    <div class="card">
-      <h3>🎟️ TICKET</h3>
-      <p>₹399 / person</p>
-    </div>
+    <strong>📅 Date:</strong> 14 October 2026<br>
+
+    <strong>⏰ Time:</strong> 5:30 PM onwards<br>
+
+    <strong>📍 Venue:</strong> Shree Devi College, Kenjar<br>
+
+    <strong>🎟️ Ticket:</strong> ₹399/person<br>
+
+    <strong>🎫 Total Tickets:</strong> 350
 
   </div>
-</section>
 
-<section id="register">
 
-  <h2 class="title">REGISTER NOW</h2>
+  <div class="card">
 
-  <div class="form-box">
+    <h2>🎟️ Register Now</h2>
 
-    <label>Full Name</label>
-    <input type="text" id="name" placeholder="Enter your full name">
+    <form id="registrationForm">
 
-    <label>College Registration Number</label>
-    <input type="text" id="collegeReg" placeholder="Enter registration number">
+      <label>Full Name</label>
 
-    <label>Mobile Number</label>
-    <input type="tel" id="phone" placeholder="Enter mobile number">
+      <input
+        type="text"
+        id="name"
+        required
+        placeholder="Enter your full name"
+      >
 
-    <label>Email Address</label>
-    <input type="email" id="email" placeholder="Enter email">
+      <label>College Registration Number</label>
 
-    <label>Number of Tickets</label>
+      <input
+        type="text"
+        id="collegeRegNo"
+        required
+        placeholder="Enter registration number"
+      >
 
-    <select id="quantity" onchange="updateTotal()">
-      <option value="1">1 Ticket</option>
-      <option value="2">2 Tickets</option>
-      <option value="3">3 Tickets</option>
-      <option value="4">4 Tickets</option>
-      <option value="5">5 Tickets</option>
-    </select>
+      <label>Mobile Number</label>
 
-    <div class="total">
-      Total: ₹<span id="total">399</span>
-    </div>
+      <input
+        type="tel"
+        id="phone"
+        required
+        placeholder="Enter mobile number"
+      >
 
-    <div class="payment">
+      <label>Email Address</label>
 
-      <h3>PAYMENT</h3>
+      <input
+        type="email"
+        id="email"
+        required
+        placeholder="Enter email address"
+      >
 
-      <button onclick="pay('UPI / QR')">
-        📱 UPI / QR
-      </button>
+      <label>Number of Tickets</label>
 
-      <button onclick="pay('Net Banking')">
-        🏦 Net Banking
-      </button>
+      <select id="quantity" required>
+        <option value="1">1 Ticket</option>
+        <option value="2">2 Tickets</option>
+        <option value="3">3 Tickets</option>
+        <option value="4">4 Tickets</option>
+        <option value="5">5 Tickets</option>
+      </select>
 
-      <button onclick="pay('Card')">
-        💳 Card
-      </button>
-
-      <div class="status" id="status">
-        Payment not completed
+      <div class="price">
+        Total: ₹<span id="total">399</span>
       </div>
 
+      <button type="submit" id="payButton">
+        Pay & Get Ticket
+      </button>
+
+    </form>
+
+    <div id="message"></div>
+
+  </div>
+
+
+  <div id="ticket">
+
+    <div class="ticket-title">
+      🎉 RANGREZ
     </div>
+
+    <h3>THE GARBA NIGHT 2K26</h3>
+
+    <p class="success">
+      ✅ PAYMENT SUCCESSFUL
+    </p>
+
+    <hr>
+
+    <p>
+      <strong>Name:</strong>
+      <span id="ticketName"></span>
+    </p>
+
+    <p>
+      <strong>College Reg. No:</strong>
+      <span id="ticketReg"></span>
+    </p>
+
+    <p>
+      <strong>Tickets:</strong>
+      <span id="ticketQuantity"></span>
+    </p>
+
+    <p>
+      <strong>Booking ID:</strong>
+      <span id="ticketBooking"></span>
+    </p>
+
+    <p>
+      <strong>Date:</strong> 14 October 2026
+    </p>
+
+    <p>
+      <strong>Time:</strong> 5:30 PM onwards
+    </p>
+
+    <p>
+      <strong>Venue:</strong> Shree Devi College, Kenjar
+    </p>
+
+    <img id="ticketQR" alt="Entry QR Code">
+
+    <p>
+      📱 Show this QR code at the entrance.
+    </p>
 
     <button
-      class="confirm"
-      id="confirm"
-      onclick="bookTicket()"
-      disabled>
-      CONFIRM BOOKING
+      class="download-btn"
+      onclick="window.print()"
+    >
+      Download / Print Ticket
     </button>
-
-    <div class="ticket" id="ticket">
-
-      <h2>🎟️ RANGREZ DIGITAL TICKET</h2>
-
-      <p><strong>Name:</strong> <span id="tName"></span></p>
-
-      <p>
-        <strong>College Registration No:</strong>
-        <span id="tReg"></span>
-      </p>
-
-      <p>
-        <strong>Tickets:</strong>
-        <span id="tQty"></span>
-      </p>
-
-      <p>
-        <strong>Booking ID:</strong>
-        <span id="bookingId"></span>
-      </p>
-
-      <p>
-        <strong>Event:</strong>
-        RANGREZ – THE GARBA NIGHT 2K26
-      </p>
-
-      <p>
-        <strong>Date:</strong>
-        14 October 2026
-      </p>
-
-      <p>
-        <strong>Time:</strong>
-        5:30 PM onwards
-      </p>
-
-      <p>
-        <strong>Venue:</strong>
-        Shree Devi College, Kenjar
-      </p>
-
-      <p>
-        <strong>Payment:</strong>
-        Successful
-      </p>
-
-      <div style="margin-top:20px;font-size:45px;">
-        ▣ QR
-      </div>
-
-    </div>
 
   </div>
 
-</section>
+</div>
 
-<footer>
-  © 2026 RANGREZ – THE GARBA NIGHT 2K26
-  <br>
-  Student Council Members
-</footer>
 
 <script>
 
-const PRICE = 399;
+const quantitySelect = document.getElementById("quantity");
+const totalElement = document.getElementById("total");
+const form = document.getElementById("registrationForm");
+const payButton = document.getElementById("payButton");
+const message = document.getElementById("message");
 
-let paymentCompleted = false;
+quantitySelect.addEventListener("change", function () {
 
-function updateTotal() {
+  const quantity = Number(this.value);
 
-  const quantity =
-    document.getElementById("quantity").value;
+  totalElement.textContent = quantity * 399;
 
-  document.getElementById("total").innerText =
-    quantity * PRICE;
+});
+
+
+function escapeHTML(value) {
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+
 }
 
-function pay(method) {
 
-  /*
-    DEMO PAYMENT ONLY.
+form.addEventListener("submit", async function(event) {
 
-    Real UPI/Card/Net Banking payment
-    must be connected to a payment gateway
-    and verified on a server.
-  */
+  event.preventDefault();
 
-  paymentCompleted = true;
+  payButton.disabled = true;
 
-  document.getElementById("status").innerText =
-    "✓ Payment successful via " + method;
+  payButton.textContent = "Creating payment...";
 
-  document.getElementById("status").style.background =
-    "#164d2b";
-
-  const button =
-    document.getElementById("confirm");
-
-  button.disabled = false;
-
-  button.classList.add("enabled");
-}
-
-function bookTicket() {
-
-  if (!paymentCompleted) {
-
-    alert("Please complete payment first.");
-
-    return;
-  }
+  message.textContent = "";
 
   const name =
     document.getElementById("name").value.trim();
 
-  const reg =
-    document.getElementById("collegeReg").value.trim();
+  const collegeRegNo =
+    document.getElementById("collegeRegNo").value.trim();
 
   const phone =
     document.getElementById("phone").value.trim();
@@ -430,37 +369,254 @@ function bookTicket() {
     document.getElementById("email").value.trim();
 
   const quantity =
-    document.getElementById("quantity").value;
+    Number(document.getElementById("quantity").value);
 
-  if (!name || !reg || !phone || !email) {
 
-    alert("Please fill all details.");
+  try {
 
-    return;
+    /* STEP 1: CREATE ORDER */
+
+    const orderResponse = await fetch(
+      "/api/create-order",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          name,
+          collegeRegNo,
+          phone,
+          email,
+          quantity
+        })
+      }
+    );
+
+
+    const orderData = await orderResponse.json();
+
+
+    if (!orderResponse.ok) {
+
+      throw new Error(
+        orderData.error ||
+        "Unable to create payment."
+      );
+
+    }
+
+
+    /* STEP 2: OPEN RAZORPAY */
+
+    const options = {
+
+      key: null,
+
+      amount: orderData.amount,
+
+      currency: orderData.currency,
+
+      name: "RANGREZ – THE GARBA NIGHT 2K26",
+
+      description: "Garba Night Ticket",
+
+      order_id: orderData.orderId,
+
+      prefill: {
+        name: name,
+        email: email,
+        contact: phone
+      },
+
+      theme: {
+        color: "#6a1b9a"
+      },
+
+
+      handler: async function(response) {
+
+        message.textContent =
+          "Verifying payment...";
+
+        try {
+
+          /* STEP 3: VERIFY PAYMENT */
+
+          const verifyResponse = await fetch(
+            "/api/verify-payment",
+            {
+              method: "POST",
+
+              headers: {
+                "Content-Type": "application/json"
+              },
+
+              body: JSON.stringify({
+
+                bookingId:
+                  orderData.bookingId,
+
+                razorpay_order_id:
+                  response.razorpay_order_id,
+
+                razorpay_payment_id:
+                  response.razorpay_payment_id,
+
+                razorpay_signature:
+                  response.razorpay_signature
+
+              })
+            }
+          );
+
+
+          const verifyData =
+            await verifyResponse.json();
+
+
+          if (!verifyResponse.ok ||
+              !verifyData.success) {
+
+            throw new Error(
+              verifyData.error ||
+              "Payment verification failed."
+            );
+
+          }
+
+
+          /* STEP 4: SHOW TICKET */
+
+          document.getElementById(
+            "ticketName"
+          ).textContent = name;
+
+          document.getElementById(
+            "ticketReg"
+          ).textContent = collegeRegNo;
+
+          document.getElementById(
+            "ticketQuantity"
+          ).textContent = quantity;
+
+          document.getElementById(
+            "ticketBooking"
+          ).textContent =
+            verifyData.ticket.bookingCode;
+
+          document.getElementById(
+            "ticketQR"
+          ).src =
+            verifyData.ticket.qr;
+
+
+          document.getElementById(
+            "ticket"
+          ).style.display = "block";
+
+
+          message.textContent =
+            "✅ Payment successful! Your ticket is ready.";
+
+          message.style.color = "green";
+
+          form.style.display = "none";
+
+          document.getElementById(
+            "ticket"
+          ).scrollIntoView({
+            behavior: "smooth"
+          });
+
+        }
+
+        catch (error) {
+
+          message.textContent =
+            error.message ||
+            "Payment verification failed.";
+
+          message.style.color = "red";
+
+          payButton.disabled = false;
+
+          payButton.textContent =
+            "Pay & Get Ticket";
+
+        }
+
+      },
+
+
+      modal: {
+
+        ondismiss: function() {
+
+          message.textContent =
+            "Payment cancelled.";
+
+          message.style.color = "red";
+
+          payButton.disabled = false;
+
+          payButton.textContent =
+            "Pay & Get Ticket";
+
+        }
+
+      }
+
+    };
+
+
+    /* GET RAZORPAY KEY */
+
+    const configResponse =
+      await fetch("/api/config");
+
+    const config =
+      await configResponse.json();
+
+
+    if (!config.keyId) {
+
+      throw new Error(
+        "Razorpay configuration is missing."
+      );
+
+    }
+
+
+    options.key = config.keyId;
+
+
+    const razorpay =
+      new Razorpay(options);
+
+
+    razorpay.open();
+
   }
 
-  const booking =
-    "RNG-" + Date.now().toString().slice(-8);
+  catch (error) {
 
-  document.getElementById("tName").innerText =
-    name;
+    message.textContent =
+      error.message ||
+      "Something went wrong.";
 
-  document.getElementById("tReg").innerText =
-    reg;
+    message.style.color = "red";
 
-  document.getElementById("tQty").innerText =
-    quantity;
+    payButton.disabled = false;
 
-  document.getElementById("bookingId").innerText =
-    booking;
+    payButton.textContent =
+      "Pay & Get Ticket";
 
-  document.getElementById("ticket").style.display =
-    "block";
+  }
 
-  document.getElementById("ticket").scrollIntoView({
-    behavior: "smooth"
-  });
-}
+});
 
 </script>
 
