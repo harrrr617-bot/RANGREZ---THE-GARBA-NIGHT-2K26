@@ -1,0 +1,27 @@
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_SECRET_KEY
+);
+
+export default async function handler(req, res) {
+  try {
+    const { data, error } = await supabase.rpc(
+      "get_ticket_capacity"
+    );
+
+    if (error) {
+      return res.status(500).json({
+        error: error.message
+      });
+    }
+
+    return res.status(200).json(data[0]);
+
+  } catch (error) {
+    return res.status(500).json({
+      error: "Unable to get ticket capacity."
+    });
+  }
+}
