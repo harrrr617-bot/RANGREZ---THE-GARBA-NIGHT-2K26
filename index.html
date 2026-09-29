@@ -1,98 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rangrez Garba 2026</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>Rangrez Garba 2026</title>
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: #241008;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background:
+    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.7)),
+    url("https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1600&q=80")
+    center/cover fixed;
+}
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px 20px;
+}
 
-    .hero p {
-      font-size: 18px;
-    }
+.hero {
+  text-align: center;
+  padding: 50px 10px 30px;
+}
 
-    .booking {
-      max-width: 500px;
-      margin: 40px auto;
-      padding: 25px;
-      background: #222;
-      border-radius: 15px;
-    }
+.hero h1 {
+  font-size: 42px;
+  margin: 0;
+}
 
-    h2 {
-      text-align: center;
-    }
+.hero p {
+  font-size: 18px;
+}
 
-    label {
-      display: block;
-      margin-top: 15px;
-      margin-bottom: 6px;
-    }
+.event {
+  background: rgba(0,0,0,.65);
+  padding: 25px;
+  border-radius: 18px;
+  text-align: center;
+  margin-bottom: 25px;
+}
 
-    input,
-    select {
-      width: 100%;
-      padding: 13px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+.event div {
+  margin: 12px 0;
+  font-size: 17px;
+}
 
-    button {
-      width: 100%;
-      margin-top: 25px;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      background: #e58b24;
-      color: white;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.booking {
+  background: rgba(255,255,255,.95);
+  color: #222;
+  padding: 25px;
+  border-radius: 18px;
+}
 
-    button:hover {
-      background: #c96f12;
-    }
+.booking h2 {
+  text-align: center;
+}
 
-    #message {
-      text-align: center;
-      margin-top: 15px;
-    }
-  </style>
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.price {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  border-radius: 10px;
+  background: #e08b25;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+button:active {
+  transform: scale(.98);
+}
+</style>
 </head>
 
 <body>
 
-  <section class="hero">
+<div class="container">
+
+  <div class="hero">
     <h1>Rangrez Garba 2026</h1>
-    <p>Book your tickets now</p>
-  </section>
+    <p>Celebrate • Dance • Create Memories</p>
+  </div>
 
-  <section class="booking">
+  <div class="event">
 
-    <h2>Book Your Ticket</h2>
+    <div>📅 <b>14 October 2026</b></div>
+
+    <div>⏰ <b>5:30 PM onwards</b></div>
+
+    <div>📍 <b>Shree Devi College, Kenjar</b></div>
+
+    <div>🎟️ <b>Ticket: ₹399</b></div>
+
+  </div>
+
+  <div class="booking">
+
+    <h2>🎟️ Book Your Ticket</h2>
 
     <form id="bookingForm">
 
@@ -121,58 +156,43 @@
         required
       >
 
-      <label>Ticket Type</label>
-      <select id="ticketType" required>
-        <option value="">Select ticket</option>
-        <option value="499">General - ₹499</option>
-        <option value="999">VIP - ₹999</option>
-      </select>
-
-      <label>Number of Tickets</label>
-      <select id="quantity" required>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+      <div class="price">
+        ₹399
+      </div>
 
       <button type="submit">
-        Book Ticket
+        Pay ₹399 & Book Ticket
       </button>
-
-      <p id="message"></p>
 
     </form>
 
-  </section>
+  </div>
 
-  <script>
-    document
-      .getElementById("bookingForm")
-      .addEventListener("submit", function (e) {
+</div>
 
-        e.preventDefault();
+<script>
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
 
-        const name = document.getElementById("name").value.trim();
-        const phone = document.getElementById("phone").value.trim();
-        const email = document.getElementById("email").value.trim();
+  e.preventDefault();
 
-        if (!name || !phone || !email) {
-          alert("Please fill all details");
-          return;
-        }
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const email = document.getElementById("email").value.trim();
 
-        if (!/^[0-9]{10}$/.test(phone)) {
-          alert("Please enter a valid 10-digit mobile number");
-          return;
-        }
+  if (!name || !phone || !email) {
+    alert("Please fill all details");
+    return;
+  }
 
-        document.getElementById("message").textContent =
-          "Booking details submitted successfully!";
+  if (!/^[0-9]{10}$/.test(phone)) {
+    alert("Enter a valid 10-digit mobile number");
+    return;
+  }
 
-      });
-  </script>
+  alert("Details saved. Payment will be connected next.");
+
+});
+</script>
 
 </body>
 </html>
